@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 복습</title>
+</head>
+<body>
+    <h3>버튼 만들기 복습</h3>
+    <h4>06.23</h4>
+    <button id="naverBTN">https://www.naver.com</button>
+    <button id="googleBTN">https://www.google.com</button>
+    <button id="githubBTN">https://www.github.com</button>
+    <button id="daumBTN">https://www.daum.net</button>  
+    
+    <h3>이벤트 전파 예제</h3>
+    <p>자식요소가 많고 각각 하는 작업이 기능이 같을 때 -> 입력값 다름</p>
+    <p>부모요소에 이벤트 리스너를 등록하여 자식이벤트를 처리 - 자식 이벤트가 생기면
+        부모요소로 전파가 되므로 가능합니다.
+    </p>
+    <div id="parent" style="background-color: antiquewhite; padding: 20px;">
+        <button id="https://www.naver.com">네이버</button>
+        <button id="https://www.google.com">구글</button>
+        <button id="https://www.github.com">깃헙</button>
+        <button id="https://www.daum.net">다음</button>
+    </div>
+
+    <script>
+        "use strict"
+        // 변수 선언을 강제. (use strict 가 없으면 let, const 없이 변수 사용 가능)
+        // 이벤트 전파 예시 - parent 에 이벤트 리스너 등록하기
+        const parent = document.getElementById('parent')
+        parent.addEventListener('click', (event) => {
+                console.log("이벤트 타입:", event.type); 
+                console.log("클릭한 위치:", event.clientX, event.clientY); 
+                console.log("클릭한 요소 이름 : ", event.target.tagName);
+                if (event.target.tagName === 'BUTTON') {
+                    window.open(event.target.id, '_blank')
+                }
+            }
+        )
+    
+        // 기존함수
+        const naverBTN = document.getElementById('naverBTN')
+        naverBTN.addEventListener('click', function() {
+            window.open(naverBTN.textContent, '_blank')
+            }
+        )   
+    
+        // 화살표 함수 : function 키워드 생략하는 형식
+        // const googleBTN = document.getElementById('googleBTN') 생략가능
+        // 많이 사용하는 키워드는 중복과 충돌 발생 -> 직접 선언(권고 사항)
+        googleBTN.addEventListener('click', () => {
+            window.open(googleBTN.textContent, '_blank')
+            }
+    
+        )
+
+        githubBTN.addEventListener('click', () => {
+            window.open(githubBTN.textContent, '_blank')
+            }
+    
+        )
+
+        daumBTN.addEventListener('click', () => {
+            window.open(daumBTN.textContent, '_blank')
+            }
+    
+        )   
+    </script>
+</body>
+</html>
