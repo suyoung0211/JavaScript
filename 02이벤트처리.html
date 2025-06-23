@@ -24,21 +24,28 @@
         <li>onclick (예) 속성에 직접 js 함수로 실행</li>
         <li>onclick 속성 사용하지 않고 addEventListener() 메소드 사용</li>
     </ol>
-    <!-- 필요에 의해서 특정 이벤트에 대한 처리할 명령을 작성. -->
+
+    <!-- 1. onclick 속성에 직접 js 명령어 작성
+    필요에 의해서 특정 이벤트에 대한 처리할 명령을 작성. -->
     <button type="button" onclick="alert('안녕하십니까? 환영합니다')">1.인사하기</button>
     <!-- form 태그 없이 쓰면 type="button" 기본값(생략) -->
     <button onclick="location.href='https://github.com'">1.깃헙 가기</button>
     <button onclick="window.open('https://github.com','_blank')">1.깃헙 가기(새창)</button> 
     <hr>
+
+    <!-- 2. onclick 속성에 직접 js 함수로 실행 -->
     <button onclick="goUrl('https://github.com')">2.깃헙 가기</button>
     <button onclick="goUrl('https://naver.com')">2.네이버 가기</button>
     <button onclick="goUrl('https://google.com')">2.구글 가기</button>
     <hr>
+
+    <!-- 3. onclick 속성 사용하지 않고 addEventListener() 메소드 사용 -->
+    <!-- 3. 인사하기 버튼 가져오기 -->
     <input type="text" id="client" placeholder="인사할 고객 이름을 입력하세요.">
     <!-- input 에 입력한 내용은 value 속성에 저장됩니다. -->
     <button id="greet">3.인사하기</button>
     <script>
-        const greet = document.getElementById('greet')  // 3. 인사하기 버튼 가져오기
+        const greet = document.getElementById('greet')
         greet.addEventListener('click', function()  // 함수(메소드)안의 함수 => 콜백함수. 이름없이 사용           
             {
             const name = document.getElementById('client').value
@@ -47,24 +54,31 @@
         )  // addEventListener 끝
     </script>
     <hr>
+    
+    <!-- 3. URL 이동하기 버튼 -->
     <input type="text" id="url_adress" placeholder="가고 싶은 사이트 주소">
     <button id="goBTN">3.URL이동하기</button>
     <script>
         const goBTN = document.getElementById('goBTN')
         goBTN.addEventListener('click', function() {
+            // id="goBTN" 요소에 '클릭'이벤트가 발생할때 처리할 함수 등록
             const url = document.getElementById('url_adress').value
-            window.open('https://www.' + url, '_blank');
+            window.open('https://' + url, '_blank');
         }
     )
     </script>
     <hr>
-    <button id="naverBTN">https://www.naver.com</button>
+
+    <!-- 3. URL 주소 버튼으로 이동하기 -->
+    <button id="naverBTN">https://www.naver.com</button> 
     <script>
         const naverBTN = document.getElementById('naverBTN')
         naverBTN.addEventListener('click', function() {
+            // 1줄
             window.open(naverBTN.textContent, '_blank')
-        }
-    )
+            // textContent 속성 : 시작태그와 종료태그 사이의 텍스트
+            }
+        )
     </script>
 </body>
 </html>
