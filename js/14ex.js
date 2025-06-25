@@ -17,10 +17,6 @@ exeBtn.addEventListener('click', function() {
     }
 )
 
-
-
-
-
 // 4개 연산을 테스트. console 에 결과값 출력. 값은 789 125
 console.log(calc(789,125,'+'))
 console.log(calc(789,125,'-'))
